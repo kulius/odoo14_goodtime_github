@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="machine_locaction_tree_view" model="ir.ui.view">
+            <field name="name">場域資料</field>
+            <field name="model">machine.locaction</field>
+            <field name="arch" type="xml">
+                <tree string="機器清單">
+                    <field name="country_id" options='{"no_open": True, "no_create": True}' invisible="1"/>
+                    <field name="state_id" class="o_address_state" placeholder="縣市" options='{"no_open": True}' context="{'country_id': country_id}"/>
+                    <field name="city_id" class="o_address_state" placeholder="鄉鎮市區" options='{"no_open": True}' context="{'country_id': country_id, 'default_country_id': country_id, 'state_id': state_id}"/>
+                    <field name="area_address"/>
+                    <field name="employee_area" widget="many2many_tags"/>
+                    <field name="area_name"/>
+                    <field name="project_name"/>
+                    <field name="project_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="machine_locaction_form_view" model="ir.ui.view">
+            <field name="name">場域資料</field>
+            <field name="model">machine.locaction</field>
+            <field name="arch" type="xml">
+                <form string="機器清單">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="country_id" options='{"no_open": True, "no_create": True}' invisible="1"/>
+                                <field name="state_id" class="o_address_state" placeholder="縣市" options='{"no_open": True}' context="{'country_id': country_id}"/>
+                                <field name="city_id" class="o_address_state" placeholder="鄉鎮市區" options='{"no_open": True}' context="{'country_id': country_id, 'default_country_id': country_id, 'state_id': state_id}"/>
+                                <field name="area_name"/>
+                                <field name="employee_area" widget="many2many_tags"/>
+                                <field name="project_name"/>
+                                <field name="project_number"/>
+                                <field name="area_address"/>
+                            </group>
+                            <group>
+                                <field name="area_rent"/>
+                                <field name="area_water_expense"/>
+                                <field name="area_electricity_expense"/>
+                                <field name="pay_way"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        <record id="machine_locaction_search" model="ir.ui.view">-->
+<!--            <field name="name">場域資料</field>-->
+<!--            <field name="model">machine.locaction</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="機器清單">-->
+<!--                    <filter string="封存" name="inactive" domain="[('active', '=', False)]"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="action_machine_locaction" model="ir.actions.act_window">
+            <field name="name">場域資料</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">machine.locaction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem id="menu_machine_locaction" name="場域資料"
+            parent="menu_convenient_setting"
+            action="action_machine_locaction" sequence="1"/>
+
+    </data>
+</odoo>

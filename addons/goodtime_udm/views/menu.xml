@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            id="menu_phison_root"
+            name="智販機"
+            web_icon="goodtime_udm,static/description/phi.png"
+            sequence="75"/>
+    </data>
+</odoo>
+

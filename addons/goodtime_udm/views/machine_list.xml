@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="machine_list_tree_view" model="ir.ui.view">
+            <field name="name">機器清單</field>
+            <field name="model">machine.list</field>
+            <field name="arch" type="xml">
+                <tree string="機器清單">
+                    <field name="area"/>
+                    <field name="machine_name"/>
+                    <field name="vmc"/>
+                    <field name="vendor" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="machine_list_form_view" model="ir.ui.view">
+            <field name="name">機器清單</field>
+            <field name="model">machine.list</field>
+            <field name="arch" type="xml">
+                <form string="機器清單">
+                    <sheet>
+                        <group string="智販機重要資料">
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="machine_name"/>
+                                <field name="area"/>
+                                <field name="vendor" widget="many2many_tags"/>
+                                <field name="vmc"/>
+                            </group>
+                            <group>
+                                <field name="machine_number"/>
+                                <field name="machine_category1_number"/>
+                                <field name="machine_category2_number"/>
+                                <field name="machine_category3_number"/>
+                            </group>
+                        </group>
+                        <group string="智販機基本資料一">
+                            <group>
+                                <field name="machine_belong"/>
+                                <field name="customer"/>
+                                <field name="operator"/>
+                                <field name="sales_category"/>
+                                <field name="machine_category"/>
+                                <field name="other_device1"/>
+                                <field name="other_device2"/>
+                            </group>
+                            <group>
+                                <field name="machine_responsible"/>
+                                <field name="machine_start_date"/>
+                                <field name="system_model"/>
+                                <field name="contract_start"/>
+                                <field name="contract_end"/>
+                                <field name="machine_cost"/>
+                            </group>
+                        </group>
+                        <group string="智販機基本資料二">
+                            <group>
+                                <field name="machine_voltage"/>
+                                <field name="move_record"/>
+                                <field name="machine_internet"/>
+                                <field name="machine_sim"/>
+                                <field name="easy_card"/>
+                                <field name="cellphone_pay"/>
+                                <field name="key_number1"/>
+                                <field name="key_number2"/>
+                                <field name="key_number3"/>
+                                <field name="key_number4"/>
+                                <field name="key_count"/>
+                                <field name="computer"/>
+                                <field name="operate_business_name"/>
+                            </group>
+                            <group>
+                                <field name="catch_psw1"/>
+                                <field name="catch_psw2"/>
+                                <field name="teamviewer"/>
+                                <field name="teamviewer_pwd"/>
+                                <field name="anydesk"/>
+                                <field name="anydesk_pwd"/>
+                                <field name="remote_pw"/>
+                                <field name="paper_wire"/>
+                                <field name="backstage"/>
+                                <field name="token"/>
+                                <field name="order_store"/>
+                                <field name="light"/>
+                                <field name="note"/>
+                                <field name="resume_change"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_machine_list" model="ir.actions.act_window">
+            <field name="name">機器清單</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">machine.list</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_convenient_setting" name="設定"
+            parent="menu_phison_root"
+            action="action_machine_list" sequence="60"/>
+        <menuitem id="menu_machine_list" name="機器清單"
+            parent="menu_convenient_setting"
+            action="action_machine_list" sequence="2"/>
+
+    </data>
+</odoo>
